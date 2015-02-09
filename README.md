@@ -19,3 +19,6 @@ The `colors` folder contains all the custom color schemes. Since I suck at anyth
 ## Plugins
 
 Plugins are managed with pathogen. All the plugins are submodules in the `bundle` directory. All repositories are currently udpated manually with git.
+
+To install or update plugin repositories:
+    git submodule update --init --recursive
