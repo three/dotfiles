@@ -152,6 +152,9 @@ set nobackup
 set nowb
 set noswapfile
 
+" Ensure current directory is always in the file we're on
+set autochdir
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
