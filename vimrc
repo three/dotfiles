@@ -109,8 +109,9 @@ set number
 " Enable syntax highlighting
 syntax enable 
 
-colorscheme corn
 set background=dark
+let g:rehash256 = 1
+colorscheme molokai
 
 " Set extra options when running in GUI mode
 if has("gui_running")

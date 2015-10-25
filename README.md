@@ -16,6 +16,8 @@ The current .vimrc is heavily based off [The Ultimate Vim Configuration on Githu
 
 The `colors` folder contains all the custom color schemes. Since I suck at anything color or design related all of these probably came premade from [Vivify](http://bytefluent.com/vivify/).
 
+Some color schemes require a 256-color terminal that detects properly. See http://vim.wikia.com/wiki/256_colors_setup_for_console_Vim for more information.
+
 ## Plugins
 
 Plugins are managed with pathogen. All the plugins are submodules in the `bundle` directory. All repositories are currently udpated manually with git.
