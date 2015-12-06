@@ -29,3 +29,9 @@ To download plugin repositories:
 To update plugin repositories:
 
     git submodule foreach git pull origin master
+
+## Neovim
+
+The `init.vim` file should automatically load `vimrc` as the configuration file if the repository is installed in `~/.config/nvim`. A symbolic link can also be used.
+
+I have not used neovim extensively and make no guarantees of compatibility. I have only used neovim on Linux as Windows support is not yet officially completed.
