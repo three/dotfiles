@@ -394,3 +394,6 @@ execute pathogen#infect()
 "" Syntastic
 let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_python_pylint_args = "-errors-only"
+
+"" Ctrl P
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
