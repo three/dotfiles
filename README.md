@@ -16,7 +16,7 @@ The current .vimrc is heavily based off [The Ultimate Vim Configuration on Githu
 
 The `colors` folder contains all non-default themes for use with this setup. Most themes should contain a header saying where they originally came from. See [Vivify](http://bytefluent.com/vivify/) for more themes.
 
-Some color schemes require a 256-color terminal that detects properly. See http://vim.wikia.com/wiki/256_colors_setup_for_console_Vim for more information.
+Some color schemes require a 256-color terminal that detects properly. See http://vim.wikia.com/wiki/256_colors_setup_for_console_Vim for more information (tl;dr; `export TERM=screen-256color-bce` and use neovim).
 
 ## Plugins
 
