@@ -1,4 +1,4 @@
-#VIM Configuration
+# VIM Configuration
 
 This repository is my configuration for vim stored on Github for convenience.
 
