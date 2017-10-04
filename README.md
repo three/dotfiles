@@ -1,37 +1,39 @@
-# VIM Configuration
+# Dotfiles
 
-This repository is my configuration for vim stored on Github for convenience.
+This repository contains my configuration for various tools. This README serves as documentation for my future self.
 
-## Setup
+## Submodules
 
-To use this setup this repository must be cloned into the proper vim folder. On Linux this will be `~/.vim`. On Windows it will be `%HOME%\vimfiles`. After the repo is cloned the plugins must also be pulled for them to work correctly (see plugins).
-
-## .vimrc configuration
-
-To keep everything in one place all files should be placed in the same folder. See `:help vimrc` in vim to see what the defaults are.
-
-The current .vimrc is heavily based off [The Ultimate Vim Configuration on Github](https://github.com/amix/vimrc) although it has never been updated from that source.
-
-## Color Schemes
-
-The `colors` folder contains all non-default themes for use with this setup. Most themes should contain a header saying where they originally came from. See [Vivify](http://bytefluent.com/vivify/) for more themes.
-
-Some color schemes require a 256-color terminal that detects properly. See http://vim.wikia.com/wiki/256_colors_setup_for_console_Vim for more information (tl;dr; `export TERM=screen-256color-bce` and use neovim).
-
-## Plugins
-
-Plugins are managed with pathogen. All the plugins are submodules in the `bundle` directory. All repositories are currently udpated manually with git.
-
-To download plugin repositories:
+**Pull all Submodules**
 
     git submodule update --init --recursive
 
-To update plugin repositories:
+**Update all Submodules**
 
     git submodule foreach git pull origin master
 
-## Neovim
+## Colors
 
-The `init.vim` file should automatically load `vimrc` as the configuration file if the repository is installed in `~/.config/nvim`. A symbolic link can also be used.
+I try to configure terminal programs to be compatible with and without color-supporting terminals. If a terminal does not correctly report it supports color, color will not work.
 
-I have not used neovim extensively and make no guarantees of compatibility. I have only used neovim on Linux as Windows support is not yet officially completed.
+PuTTY can be configured under `Connection -> Data -> Terminal-type string` with the value `xterm-256color` to accurately report its color support.
+
+## Vim
+
+Vim config is stored in `vim/`.
+
+```
+Linux   vim     $HOME/vim
+Linux   neovim  $HOME/.config/neovim
+Windows vim     %HOME%\vimfiles
+
+Other   (See :help vimrc)
+```
+
+Vimrc on https://github.com/amix/vimrc
+
+Many colorschemes are from or created with http://bytefluent.com/vivify/
+
+# Copyright
+
+Many parts of this repository are based on the work of others and have licenses attached to them. For everything that does not already have a license attached (original work by myself), I waive all copyright.
