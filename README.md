@@ -43,6 +43,14 @@ export DOTFILES=$HOME/dotfiles
 source $DOTFILES/shell/zsh.sh
 ```
 
+**ZSH w/ Oh My Zsh and Powerline-compatible font**
+
+```
+export DOTFILES=$HOME/dotfiles
+export MYCONFIG_POWERLINE=true
+source $DOTFILES/shell/zsh.sh
+```
+
 **Bash**
 
 ```
