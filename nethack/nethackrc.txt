@@ -1,0 +1,27 @@
+# On Linux, should be placed in $HOME/.nethackrc
+# Descriptions from https://nethackwiki.com/wiki/Options
+
+# Automatically pick up things onto which you move.
+OPTIONS=!autopickup
+
+# NetHack should display color if it can for different monsters, objects, and
+# dungeon features.
+OPTIONS=color
+
+# Allows looking at things on the screen by navigating the mouse over them and
+# clicking the right mouse button.
+OPTIONS=clicklook
+
+# Extended commands interface pop up a menu, only implemented for the TTY
+# windowport.
+OPTIONS=extmenu
+
+# Visually distinguish pets from similar animals (This includes both your
+# starting pet and any monsters you happen to tame along the way).
+OPTIONS=hilite_pet
+
+# Visually distinguish piles of objects from individual objects.
+OPTIONS=hilite_pile
+
+# Displays elapsed game time, in turns, on the status line.
+OPTIONS=time
