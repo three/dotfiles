@@ -327,6 +327,15 @@ map <leader>q :e ~/buffer<cr>
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
 
+" Don't Show line numbers in terminal (neovim only)
+function! SetNoNumberNoRelativeNumber()
+    set norelativenumber
+    set nonumber
+endfunc
+
+if has('nvim')
+    autocmd TermOpen * :call SetNoNumberNoRelativeNumber()
+end
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
