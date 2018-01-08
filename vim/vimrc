@@ -17,6 +17,7 @@
 "    -> Editing mappings
 "    -> vimgrep searching and cope displaying
 "    -> Spell checking
+"    -> Mouse
 "    -> Misc
 "    -> Helper functions
 "    -> License
@@ -314,6 +315,15 @@ map <leader>sp [s
 map <leader>sa zg
 map <leader>s? z=
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Mouse
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" https://superuser.com/questions/549930/cant-resize-vim-splits-inside-tmux
+set mouse+=a
+if &term =~ '^screen'
+    set ttymouse=xterm2
+endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Misc
