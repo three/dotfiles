@@ -10,5 +10,15 @@ else
 fi
 
 plugins=(git)
+unsetopt AUTO_CD
 
 source $ZSH/oh-my-zsh.sh
+
+# Intead of loading NVM immediately (since it's rarely used), only load on
+# first use. Note the definition of the nvm command will be overwritten by
+# nvm.sh, so this is not actually recursive
+
+export NVM_DIR=$DOTFILES/shell/nvm
+nvm() {
+    source $NVM_DIR/nvm.sh && nvm
+}

@@ -16,3 +16,6 @@
 [submodule "shell/oh-my-zsh"]
 	path = shell/oh-my-zsh
 	url = https://github.com/robbyrussell/oh-my-zsh.git
+[submodule "shell/nvm"]
+	path = shell/nvm
+	url = https://github.com/creationix/nvm.git
