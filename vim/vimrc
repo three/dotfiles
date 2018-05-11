@@ -114,6 +114,10 @@ set number
 " Enable syntax highlighting
 syntax enable 
 
+" Custom Syntax Highlighting
+
+au BufRead,BufNewFile *.ts setfiletype typescript
+
 set background=dark
 let g:rehash256 = 1
 colorscheme molokai
