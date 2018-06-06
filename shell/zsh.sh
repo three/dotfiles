@@ -20,5 +20,6 @@ source $ZSH/oh-my-zsh.sh
 
 export NVM_DIR=$DOTFILES/shell/nvm
 nvm() {
-    source $NVM_DIR/nvm.sh && nvm
+    source $NVM_DIR/nvm.sh
+    nvm "$@"
 }

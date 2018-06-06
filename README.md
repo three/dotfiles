@@ -18,22 +18,6 @@ I try to configure terminal programs to be compatible with and without color-sup
 
 PuTTY can be configured under `Connection -> Data -> Terminal-type string` with the value `putty-256color` to accurately report its color support.
 
-## Vim
-
-Vim config is stored in `vim`.
-
-```
-Linux   vim     $HOME/.vim
-Linux   neovim  $HOME/.config/neovim
-Windows vim     %HOME%\vimfiles
-
-Other   (See :help vimrc)
-```
-
-My vimrc is based on https://github.com/amix/vimrc
-
-Many colorschemes are from or created with http://bytefluent.com/vivify/
-
 ## Shells
 
 **ZSH w/ Oh My Zsh**
