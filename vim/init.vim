@@ -441,10 +441,13 @@ Plug 'tpope/vim-fugitive'
 
 "" Scala
 Plug 'derekwyatt/vim-scala'
+Plug 'ensime/ensime-vim', { 'do': ':UpdateRemotePlugins' }
 let g:formatdef_scalafmt = "'scalafmt --stdin'"
 let g:formatters_scala = ['scalafmt']
 
 "" Typescript
+Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+Plug 'leafgarland/typescript-vim'
 Plug 'Quramy/tsuquyomi'
 autocmd FileType typescript nmap <buffer> <Leader>t : <C-u>echo tsuquyomi#hint()<CR>
 autocmd FileType scala nmap <buffer> <Leader>t :EnType<CR>

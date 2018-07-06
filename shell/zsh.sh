@@ -3,8 +3,11 @@ source $DOTFILES/shell/common.sh
 export ZSH=$DOTFILES/shell/oh-my-zsh
 export DISABLE_AUTO_UPDATE="true"
 
+export ZSH_CUSTOM=$DOTFILES/shell/oh-my-zsh-custom
+
 if [[ "$MYCONFIG_POWERLINE" == "true" ]]; then
-    export ZSH_THEME="agnoster"
+    export ZSH_THEME="powerlevel9k"
+    source powerlevel9k.sh
 else
     export ZSH_THEME="clean"
 fi
