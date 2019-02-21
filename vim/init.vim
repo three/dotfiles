@@ -416,7 +416,7 @@ endfunction
 " Package Managment
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
-source plugins.vim
+runtime plugins.vim
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " License
