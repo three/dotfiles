@@ -70,6 +70,8 @@ Virtualbox Integration
 $ VBoxClient-all
 
 Screeen Resizing (Virtualbox)
+For Auto Guest Resize, use VBoxVGA Graphics Controller
+Running xrandr will trigger resize
 $ xrandr (--size <SIZE>)
 
 Dotfiles
