@@ -26,7 +26,7 @@ $ pacstrap /mnt base grub
 Package Lists
 USEFUL: base-devel sudo (g)vim htop tmux pkgfile git openssh zsh
 VIRTUALBOX: virtualbox-guest-utils(-nox)
-DESKTOP: xorg xorg-xinit noto-fonts rxvt-unicode i3-wm chromium xsel
+DESKTOP: xorg xorg-xinit noto-fonts rxvt-unicode i3-wm chromium xsel xsettingsd
 
 fstab
 $ genfstab -U /mnt >> /mnt/etc/fstab
@@ -78,3 +78,6 @@ $ git submodule update --init --recursive
 
 Vim Config
 $ ln -s $DOTFILES/vim $HOME/vim
+
+Polybar
+Build from https://aur.archlinux.org/polybar.git
