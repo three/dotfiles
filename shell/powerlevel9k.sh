@@ -1,3 +1,5 @@
+export POWERLEVEL9K_INSTALLATION_DIR="$DOTFILES/deps/powerlevel9k"
+
 export POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(user dir vcs)
 export POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status background_jobs time)
 
