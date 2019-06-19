@@ -5,6 +5,8 @@ export DISABLE_AUTO_UPDATE="true"
 
 export ZSH_CUSTOM=$DOTFILES/shell/oh-my-zsh-custom
 
+export POWERLEVEL9K_COLOR_SCHEME="light"
+
 if [[ "$MYCONFIG_POWERLINE" == "true" ]]; then
     export ZSH_THEME="powerlevel9k"
     source $(dirname $0:A)/powerlevel9k.sh
