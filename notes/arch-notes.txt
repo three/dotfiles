@@ -26,7 +26,8 @@ $ pacstrap /mnt base grub
 Package Lists
 USEFUL: base-devel sudo (g)vim htop tmux pkgfile git openssh zsh
 VIRTUALBOX: virtualbox-guest-utils(-nox)
-DESKTOP: xorg xorg-xinit noto-fonts rxvt-unicode i3-wm chromium xsel xsettingsd
+DESKTOP: xorg xorg-xinit xorg-xrdb rxvt-unicode i3-wm chromium xsel xsettingsd dmenu dunst playerctl (aur)polybar
+FONTS: noto-fonts noto-fonts-emoji bdf-unifont ttf-dejavu ttf-ubuntu-font-family adobe-source-code-pro-fonts powerline-fonts (aur)powerline-fonts-git
 
 fstab
 $ genfstab -U /mnt >> /mnt/etc/fstab
@@ -47,7 +48,7 @@ $ hwclock --systohc --utc
 Locales
 $ echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
 $ locale-gen
-$ echo "LANG=en_US.UTF-8" >> /etc/locale.con
+$ echo "LANG=en_US.UTF-8" >> /etc/locale.conf
 
 Non-root user
 $ useradd -m -G wheel eric
@@ -69,6 +70,8 @@ Virtualbox Integration
 $ VBoxClient-all
 
 Screeen Resizing (Virtualbox)
+For Auto Guest Resize, use VBoxVGA Graphics Controller
+Running xrandr will trigger resize
 $ xrandr (--size <SIZE>)
 
 Dotfiles
@@ -78,6 +81,3 @@ $ git submodule update --init --recursive
 
 Vim Config
 $ ln -s $DOTFILES/vim $HOME/vim
-
-Polybar
-Build from https://aur.archlinux.org/polybar.git
