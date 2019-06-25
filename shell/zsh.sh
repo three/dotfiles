@@ -28,3 +28,7 @@ nvm() {
     source $NVM_DIR/nvm.sh || return 1
     nvm "$@"
 }
+
+# Init Quorum Tools
+export QUORUM_ROOT="$HOME/quorum/quorum-site"
+source "$DOTFILES/shell/quorum.sh"
