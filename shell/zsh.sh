@@ -29,6 +29,7 @@ nvm() {
     nvm "$@"
 }
 
-# Init Quorum Tools
-export QUORUM_ROOT="$HOME/quorum/quorum-site"
-source "$DOTFILES/shell/quorum.sh"
+# Init Quorum tools
+if [[ -n "$QUORUM_ROOT" ]]; then
+    source "$DOTFILES/shell/quorum.sh"
+fi
