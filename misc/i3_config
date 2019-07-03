@@ -107,6 +107,17 @@ bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
+workspace $ws1 output eDP1
+workspace $ws2 output eDP1
+workspace $ws3 output eDP1
+workspace $ws4 output eDP1
+workspace $ws5 output eDP1
+workspace $ws6 output DP3
+workspace $ws7 output DP3
+workspace $ws8 output DP3
+workspace $ws9 output DP3
+workspace $ws10 output DP3
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -164,3 +175,6 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # X Settings Daemon
 exec_always --no-startup-id xsettingsd
+
+# Floating windows
+for_window [class="keepassxc" instance="keepassxc"] floating enable
