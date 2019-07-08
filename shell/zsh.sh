@@ -33,3 +33,9 @@ nvm() {
 if [[ -n "$QUORUM_ROOT" ]]; then
     source "$DOTFILES/shell/quorum.sh"
 fi
+
+# Misc Utilities
+source "$DOTFILES/shell/utilities.sh"
+
+# Aliases
+source "$DOTFILES/shell/alias.sh"

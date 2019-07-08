@@ -1,0 +1,14 @@
+#!/bin/sh
+# There's a few situations where I need to configure a program to take in a list
+# of relevant files, usually fuzzy search programs. This generates it based on
+# what I most likely want, taking into account things like being in a git repository
+# DOES NOT INCLUDE DIRECTORIES
+set -o pipefail
+set -o errexit
+set -o nounset
+
+# If we're in a git repository, get file list from git
+git rev-parse && git ls-files -oc --exclude-standard "$(git rev-parse --show-toplevel)"
+
+# Otherwise, just search the current directory
+find . -type f
