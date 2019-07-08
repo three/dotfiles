@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# TODO: Put this functionality in vim_fzf (in shell/utilities.sh)
+
+# We search from the git root directory unless we're not in a git repoistory,
+# in which case we search from the current directory
+SEARCH_DIR="$(git rev-parse --show-toplevel)"
+SEARCH_DIR_EXITCODE="$?"
+[[ ! "$SEARCH_DIR_EXITCODE" -eq 128 ]] && [[ ! "$SEARCH_DIR_EXITCODE" -eq 0 ]] && exit "$SEARCH_DIR_EXITCODE"
+[[ ! "$SEARCH_DIR_EXITCODE" -eq 0 ]] && SEARCH_DIR="$(pwd)"
+
+(
+    cd "$SEARCH_DIR"
+    FILE_TO_OPEN="$(git ls-files -oc --exclude-standard | fzf --preview 'bat --color always {1}')"
+    [[ ! "$?" -eq 0 ]] && exit "$?"
+    vim "$FILE_TO_OPEN"
+)
