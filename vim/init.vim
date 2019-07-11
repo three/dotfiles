@@ -475,3 +475,6 @@ endif
 "let g:airline_symbols.branch = ''
 "let g:airline_symbols.readonly = ''
 "let g:airline_symbols.linenr = ''
+
+" Other stuffs
+nmap <c-p> :call fzf#run({'sink': 'e', 'source': 'listsearchfiles'})<CR>

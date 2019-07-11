@@ -1,5 +1,4 @@
-# These are some utility functions to make my life a little more convienent
-
-vim_fzf() {
-    vim "$(searchfiles | fzf --preview 'bat --color always {1}')"
-}
+edit_fzf_git() {(
+    cd "$(git rev-parse --show-toplevel || return $?)"
+    "$EDITOR" "$(git ls-files -oc --exclude-standard | fzf --preview 'bat --color always {1}')"
+)}

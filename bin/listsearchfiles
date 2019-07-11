@@ -7,8 +7,4 @@ set -o pipefail
 set -o errexit
 set -o nounset
 
-# If we're in a git repository, get file list from git
-git rev-parse && git ls-files -oc --exclude-standard "$(git rev-parse --show-toplevel)"
-
-# Otherwise, just search the current directory
-find . -type f
+git ls-files -oc --exclude-standard "$(git rev-parse --show-toplevel)" || find . -type f

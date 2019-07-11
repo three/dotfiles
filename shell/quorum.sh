@@ -28,7 +28,7 @@ quorum_lasthotfixbranch() {
 
 quorum_devshell() {(
     quorum_init
-    python manage.py shell_plus
+    python manage.py shell_plus "$@"
 )}
 
 quorum_runserver() {(

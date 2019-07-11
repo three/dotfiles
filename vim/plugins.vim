@@ -1,8 +1,8 @@
 call plug#begin("~/.local/share/vim-plugged")
 
 "" Ctrl-P
-Plug 'ctrlpvim/ctrlp.vim'
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+" Plug 'ctrlpvim/ctrlp.vim'
+" let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 "" Editorconfig
 Plug 'editorconfig/editorconfig-vim'
@@ -33,5 +33,8 @@ Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 Plug 'leafgarland/typescript-vim'
 Plug 'Quramy/tsuquyomi'
 autocmd FileType typescript nmap <buffer> <Leader>t : <C-u>echo tsuquyomi#hint()<CR>
+
+"" fzf
+Plug 'junegunn/fzf.vim'
 
 call plug#end()

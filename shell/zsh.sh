@@ -14,7 +14,7 @@ else
     export ZSH_THEME="clean"
 fi
 
-plugins=(git)
+#plugins=(git)
 unsetopt AUTO_CD
 
 source "$ZSH/oh-my-zsh.sh"
