@@ -13,3 +13,5 @@ alias gs="git status"
 # Clipboard
 alias xc="xclip -selection clipboard -i"
 alias xp="xclip -selection clipboard -o"
+
+alias cdf="cd_fzf"
