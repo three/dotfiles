@@ -52,7 +52,7 @@ quorum_resetdjangio() {(
 
 quorum_jest() {(
     cd "$QUORUM_ROOT"
-    "$(npm bin)/jest" --maxWorkers=4 --coverage "$@"
+    "$(npm bin)/jest" --maxWorkers=4 "$@"
 )}
 
 quorum_localtest() {(
@@ -96,6 +96,7 @@ quorum_jestwithdebugger() {(
 
 alias qcd='pushd $QUORUM_ROOT'
 alias qj='quorum_jest'
+alias qjc='quorum_jest --coverage'
 alias qt='quorum_localtest'
 alias qlh='quorum_lasthotfixversion'
 alias qhb='quorum_lasthotfixbranch'

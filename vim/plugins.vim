@@ -26,14 +26,16 @@ Plug 'junegunn/fzf.vim'
 "" Ale
 ""  Linting
 
-Plug 'w0rp/ale'
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_insert_leave = 0
-
-call plug#end()
+" Plug 'w0rp/ale'
+" let g:ale_lint_on_text_changed = 'never'
+" let g:ale_lint_on_insert_leave = 0
+" let g:ale_lint_on_save = 0
 
 "" Typescript
+" TODO: Switch to nvim-typescript one you upgrade to nvm 0.4.0
 " Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 " Plug 'leafgarland/typescript-vim'
 " Plug 'Quramy/tsuquyomi'
 " autocmd FileType typescript nmap <buffer> <Leader>t : <C-u>echo tsuquyomi#hint()<CR>
+
+call plug#end()
