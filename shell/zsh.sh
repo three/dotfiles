@@ -5,7 +5,9 @@ export DISABLE_AUTO_UPDATE="true"
 
 export ZSH_CUSTOM="$DOTFILES/deps"
 
-export POWERLEVEL9K_COLOR_SCHEME="light"
+if [[ -z "$POWERLEVEL9K_COLOR_SCHEME" ]]; then
+    export POWERLEVEL9K_COLOR_SCHEME="light"
+fi
 
 if [[ "$MYCONFIG_POWERLINE" == "true" ]]; then
     export ZSH_THEME="powerlevel9k/powerlevel9k"
@@ -28,11 +30,6 @@ nvm() {
     source $NVM_DIR/nvm.sh || return 1
     nvm "$@"
 }
-
-# Init Quorum tools
-if [[ -n "$QUORUM_ROOT" ]]; then
-    source "$DOTFILES/shell/quorum.sh"
-fi
 
 # Misc Utilities
 source "$DOTFILES/shell/utilities.sh"
