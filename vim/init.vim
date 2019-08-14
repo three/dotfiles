@@ -14,11 +14,6 @@
 " with both vim and neovim, I primarily use neovim.
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Other config files
-
-runtime plugins.vim
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Basic Configuration
 
 set history=700
@@ -156,4 +151,13 @@ end
 set mouse+=a
 if &term =~ '^screen'
     set ttymouse=xterm2
+endif
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Other config files
+
+if filereadable(expand($DOTFILES."/vim/config.vim"))
+    runtime ./config.vim
+else
+    runtime plugins.vim
 endif
