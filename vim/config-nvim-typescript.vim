@@ -32,10 +32,16 @@ Plug 'autozimu/LanguageClient-neovim', {
 
 let g:LanguageClient_serverCommands = {
     \ 'javascript': ['~/.yarn/bin/javascript-typescript-stdio'],
-    \ 'typescript': ['~/.yarn/bin/javascript-typescript-stdio']
+    \ 'typescript': ['~/.yarn/bin/javascript-typescript-stdio'],
+    \ 'javascript.jsx': ['~/.yarn/bin/javascript-typescript-stdio'],
+    \ 'typescript.tsx': ['~/.yarn/bin/javascript-typescript-stdio']
     \ }
 
 nnoremap <silent> <Leader>t : <C-u>call LanguageClient#textDocument_hover()<CR>
+
+"" Deoplete
+""  Code Completion
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 "" Typescript
 ""  Requires neovim 0.4.0
