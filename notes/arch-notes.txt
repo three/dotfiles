@@ -27,7 +27,7 @@ Package Lists
 USEFUL: base-devel sudo (g)vim htop tmux pkgfile git openssh zsh
 VIRTUALBOX: virtualbox-guest-utils(-nox)
 DESKTOP: xorg xorg-xinit xorg-xrdb rxvt-unicode i3-wm chromium xsel xsettingsd dmenu dunst playerctl (aur)polybar
-FONTS: noto-fonts noto-fonts-emoji bdf-unifont ttf-dejavu ttf-ubuntu-font-family adobe-source-code-pro-fonts powerline-fonts (aur)powerline-fonts-git
+FONTS: noto-fonts noto-fonts-emoji bdf-unifont ttf-dejavu ttf-ubuntu-font-family adobe-source-code-pro-fonts powerline-fonts (aur)powerline-fonts-git (aur)nerd-fonts-complete-mono-glyphs
 
 fstab
 $ genfstab -U /mnt >> /mnt/etc/fstab
@@ -81,3 +81,13 @@ $ git submodule update --init --recursive
 
 Vim Config
 $ ln -s $DOTFILES/vim $HOME/vim
+
+== Common Problems ==
+
+urxvt glyphs not rendering
+This is generally caused by too low a letterSpace which trips urxvt up on how to
+render monospace glyphs. The solution is to load the glyphs at a lower fontsize.
+Add "xft:DejaVuSansMono Nerd Font" (see FONTS packages). When my primary font is
+"xft:Source Code Pro for Powerline:pixelsize=12" I've found pixelsize=10 for
+glyphs works nicely. Note this will make the glyphs appear smaller than
+designed.
