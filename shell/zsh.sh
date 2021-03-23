@@ -42,3 +42,6 @@ source "$DOTFILES/shell/utilities.sh"
 
 # Aliases
 source "$DOTFILES/shell/alias.sh"
+
+# K
+source "$DOTFILES/shell/k.zsh"
