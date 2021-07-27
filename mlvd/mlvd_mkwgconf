@@ -1,0 +1,46 @@
+#!/usr/bin/env zsh
+#
+# Author: Patrick McLean <chutzpah@gentoo.org>
+# Author: Eric Roberts <hi@ericproberts.dev>
+#
+# SPDX-License-Identifier: GPL-2.0+
+
+set -eu -o pipefail
+
+die() { echo "Fatal: $1" >&2; exit 1 }
+
+ACCOUNT="$1"
+SERVER="$2"
+TEMP_DIR="$(mktemp -d)"
+
+curl -sSLo "$TEMP_DIR/servers.json" https://api.mullvad.net/public/relays/wireguard/v2/
+jq ".wireguard.relays | map(select(.hostname == \"$SERVER\")) | .[0]" \
+    <"$TEMP_DIR/servers.json" >"$TEMP_DIR/selected.json"
+([[ "$(jq <"$TEMP_DIR/selected.json")" == "null" ]] && echo notfonud && exit 1) || true
+SERVER_PUBKEY="$(jq -r .public_key <"$TEMP_DIR/selected.json")"
+SERVER_ADDR="$(jq -r .ipv4_addr_in <"$TEMP_DIR/selected.json")"
+MY_PRIVKEY="$(wg genkey)"
+MY_PUBKEY="$(echo "$MY_PRIVKEY" | wg pubkey)"
+
+res="$(curl -sSL https://api.mullvad.net/wg/ \
+        -d account="$ACCOUNT" \
+        --data-urlencode pubkey="$MY_PUBKEY")"
+if ! printf '%s\n' "$res" | grep -E '^[0-9a-f:/.,]+$' >/dev/null
+then
+        die "$res"
+fi
+MY_ADDR="$res"
+
+cat >"$TEMP_DIR/mlvd.conf" <<EOF
+[Interface]
+PrivateKey = $MY_PRIVKEY
+Address = $MY_ADDR
+
+[Peer]
+PublicKey = $SERVER_PUBKEY
+Endpoint = $SERVER_ADDR:51820
+AllowedIPs = 0.0.0.0/0, ::/0
+EOF
+
+cat "$TEMP_DIR/mlvd.conf"
+rm -rf "$TEMP_DIR"
