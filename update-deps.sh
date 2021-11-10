@@ -21,4 +21,5 @@ update_git_repo nvm https://github.com/nvm-sh/nvm.git
 update_git_repo oh-my-zsh https://github.com/robbyrussell/oh-my-zsh.git
 update_git_repo powerlevel9k https://github.com/bhilburn/powerlevel9k.git
 update_git_repo vim-plug https://github.com/junegunn/vim-plug.git
-update_git_repo zsh-histdb https://github.com/larkery/zsh-histdb
+update_git_repo zsh-histdb https://github.com/larkery/zsh-histdb.git
+update_git_repo zsh-autosuggestions https://github.com/zsh-users/zsh-autosuggestions.git
