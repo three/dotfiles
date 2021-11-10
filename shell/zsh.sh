@@ -45,3 +45,10 @@ source "$DOTFILES/shell/alias.sh"
 
 # K
 source "$DOTFILES/shell/k.zsh"
+
+# Zsh-histdb
+if [[ "$(uname)" = Darwin ]]; then
+    HISTDB_TABULATE_CMD=(sed -e $'s/\x1f/\t/g')
+fi
+source "$DOTFILES/deps/zsh-histdb/sqlite-history.zsh"
+autoload -Uz add-zsh-hook
