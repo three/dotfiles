@@ -16,7 +16,7 @@ else
     export ZSH_THEME="clean"
 fi
 
-plugins=(git)
+plugins=()
 unsetopt AUTO_CD
 
 source "$ZSH/oh-my-zsh.sh"
@@ -35,6 +35,12 @@ export NVM_DIR="$DOTFILES/deps/nvm"
 nvm() {
     source $NVM_DIR/nvm.sh || return 1
     nvm "$@"
+}
+
+# Commit note
+cnote() {
+    git reset
+    git commit --allow-empty "[WIP] $1"
 }
 
 # Misc Utilities
