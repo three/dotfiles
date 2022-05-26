@@ -21,6 +21,8 @@ unsetopt AUTO_CD
 
 source "$ZSH/oh-my-zsh.sh"
 
+PROMPT='%{$fg[$NCOLOR]%}%B%n%b@%m%{$reset_color%}:%{$fg[blue]%}%B%c/%b%{$reset_color%} $(git_prompt_info)%(!.#.$) '
+
 # Fedora implements this annoying package auto-installer,
 # just override it completely
 command_not_found_handler() {
