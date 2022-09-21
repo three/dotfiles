@@ -1,6 +1,6 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Eric's Personal vimrc
-" Maintainer: Eric Roberts <eric@threedot14.com>
+" Maintainer: Eric Roberts <eric@ericproberts.dev>
 " License: MIT
 "
 " This file is licensed under MIT. The latest version and a
@@ -9,9 +9,6 @@
 "
 " Inspired by the Ultimate vimrc:
 "   https://github.com/amix/vimrc
-"
-" Although I strive to make my vim configuration compatible
-" with both vim and neovim, I primarily use neovim.
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Basic Configuration
@@ -51,8 +48,8 @@ set number
 set ffs=unix,dos,mac
 
 " File backups
-set nobackup
-set nowb
+" set nobackup
+" set nowb
 set noswapfile
 
 " Indentation
@@ -80,19 +77,12 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
-" Remap VIM 0 to first non-blank character
-map 0 ^
-
 " Pressing ,ss will toggle and untoggle spell checking
 map <leader>ss :setlocal spell!<cr>
-
-" Fuzzy Search
-nmap <c-p> :call fzf#run({'sink': 'e', 'source': 'listsearchfiles'})<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Search
 
-set ignorecase
 set smartcase
 set hlsearch
 set incsearch 
@@ -155,9 +145,8 @@ endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Other config files
-
-if filereadable(expand($DOTFILES."/vim/config.vim"))
-    runtime ./config.vim
-else
-    runtime plugins.vim
-endif
+" if filereadable(expand($DOTFILES."/vim/config.vim"))
+"     runtime ./config.vim
+" else
+"     runtime plugins.vim
+" endif
