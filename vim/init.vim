@@ -135,14 +135,14 @@ autocmd BufReadPost *
 set viminfo^=%
 
 " Don't Show line numbers in terminal (neovim only)
-function! SetNoNumberNoRelativeNumber()
-    set norelativenumber
-    set nonumber
-endfunc
-
-if has('nvim')
-    autocmd TermOpen * :call SetNoNumberNoRelativeNumber()
-end
+" function! SetNoNumberNoRelativeNumber()
+"     set norelativenumber
+"     set nonumber
+" endfunc
+" 
+" if has('nvim')
+"     autocmd TermOpen * :call SetNoNumberNoRelativeNumber()
+" end
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Mouse
@@ -156,8 +156,8 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Other config files
 
-if filereadable(expand($DOTFILES."/vim/config.vim"))
-    runtime ./config.vim
-else
-    runtime plugins.vim
-endif
+" if filereadable(expand($DOTFILES."/vim/config.vim"))
+"     runtime ./config.vim
+" else
+"     runtime plugins.vim
+" endif
