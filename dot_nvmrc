@@ -25,4 +25,44 @@ command_not_found_handler() {
     printf 'zsh: %scommand not found\n' "${1:+$1: }" >&2
 }
 
+# Quorum-specific stuff
+if [[ -f "$HOME/.quorum" ]]; then
+
+export XDG_CONFIG_HOME="$HOME/.config"
+
+path=(
+    /opt/homebrew/bin
+    /opt/local/bin
+    /opt/local/lib/postgresql14/bin
+    $path
+    /Users/ericroberts/.gem/ruby/2.6.0/bin
+    /Users/ericroberts/Library/Python/3.8/bin
+    "$HOME/opt/brew/bin"
+    /opt/homebrew/sbin
+)
+
+export QUORUM_DEVTOOLS="$HOME/dev/quorum-devtools"
+export QUORUM_SITE="$HOME/dev/quorum-site"
+source "$QUORUM_DEVTOOLS/qenv.zsh"
+q_load
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+alias commit_notes='(cd "$HOME/quorum" && git add -A notes && git commit -m "[NOTES]" && git push)'
+
+export TELEPORT_USER=eric.roberts
+
+export DOTFILES="$HOME/dotfiles"
+source "$DOTFILES/shell/zsh.sh"
+
+export RIPGREP_CONFIG_PATH="$DOTFILES/ripgrep_config"
+export GIT_EXTERNAL_DIFF=difft
+
+alias brew='arch -arm64 brew'
+alias colima_start='colima start --arch x86_64 --mount /tmp/quorum_temp_data:w --runtime docker --cpu 2 --memory 4'
+
+fi
+
 # vim: syntax=zsh

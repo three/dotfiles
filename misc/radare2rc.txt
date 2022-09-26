@@ -1,5 +1,0 @@
-; See https://github.com/radare/radare2/blob/master/doc/intro.md
-; Place this file in ~/.radare2rc
-
-; Enable UTF-8 Support (arrows look much better)
-e scr.utf8 = true
