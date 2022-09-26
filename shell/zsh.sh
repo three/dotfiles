@@ -32,7 +32,6 @@ command_not_found_handler() {
 # Intead of loading NVM immediately (since it's rarely used), only load on
 # first use. Note the definition of the nvm command will be overwritten by
 # nvm.sh, so this is not actually recursive
-
 export NVM_DIR="$DOTFILES/deps/nvm"
 nvm() {
     source $NVM_DIR/nvm.sh || return 1

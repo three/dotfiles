@@ -1,0 +1,28 @@
+# DOTFILES should be set from .profile - but if this is not the case yet
+if [[ -z "${DOTFILES:-}" ]]; then
+    export DOTFILES="$HOME/.local/share/chezmoi"
+fi
+
+# Add ~/bin to PATH
+path=("$HOME/bin" $path)
+
+# Use neovim as our editor
+export EDITOR=nvim
+export VISUAL=nvim
+
+# Setup oh-my-zsh
+export DISABLE_AUTO_UPDATE=true
+plugins=()
+unsetopt autocd
+if [[ -d "$HOME/.oh-my-zsh" ]]; then
+    export ZSH="$HOME/.oh-my-zsh"
+    source "$ZSH/oh-my-zsh.sh"
+fi
+
+# Fedora implements this annoying package auto-installer,
+# just override it completely
+command_not_found_handler() {
+    printf 'zsh: %scommand not found\n' "${1:+$1: }" >&2
+}
+
+# vim: syntax=zsh
