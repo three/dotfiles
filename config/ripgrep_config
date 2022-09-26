@@ -1,5 +1,0 @@
-# To use,
-#   RIPGREP_CONFIG_PATH="$DOTFILES/ripgrep_config"
-
---max-columns=150
---max-columns-preview

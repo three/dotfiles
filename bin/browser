@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-# Use browser environment variable if it exists
-[[ ! "x$BROWSER" = "x" ]] && exec "$BROWSER" "$@"
-
-type firefox >/dev/null 2>/dev/null && exec firefox "$@"
-[[ "$(uname)" == "Darwin" ]] && [[ -d "/Applications/Firefox Developer Edition.app/Contents/MacOS" ]] && exec "/Applications/Firefox Developer Edition.app/Contents/MacOS/firefox-bin" "$@"
-
-die "Unable to find a browser"
