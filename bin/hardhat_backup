@@ -1,4 +1,5 @@
 #!/usr/bin/zsh
-echo need date >&2
-exit 1
-sudo tarsnap --keyfile /root/tarsnap.key --cachedir /var/cache/tarsnap -c -f tmp-hardhat_unknown --exclude /var/cache /home /root /etc /var
+set -x
+ARCHIVE_NAME="harhat-root_$(date '+%Y-%m-%d-%H:%M:%S')"
+echo "ARCHIVE_NAME=$ARCHIVE_NAME"
+tarsnap -v --keyfile /root/tarsnap.key --cachedir /var/cache/tarsnap -c -f tmp-hardhat_unknown --exclude /var/cache /home /root /etc /var
