@@ -1,5 +1,30 @@
 #!/usr/bin/zsh
-set -x
-ARCHIVE_NAME="harhat-root_$(date '+%Y-%m-%d-%H:%M:%S')"
+set -eux -o pipefail
+ARCHIVE_NAME="harhat-root_$(date '+%Y-%m-%dT%H:%M:%SZ')"
 echo "ARCHIVE_NAME=$ARCHIVE_NAME"
-tarsnap -v --keyfile /root/tarsnap.key --cachedir /var/cache/tarsnap -c -f tmp-hardhat_unknown --exclude /var/cache /home /root /etc /var
+
+# TODO: Why are programs throwing their caches everywhere???
+tarsnap \
+    -cvf "$ARCHIVE_NAME" \
+    --keyfile /root/tarsnap.key \
+    --cachedir /var/cache/tarsnap  \
+    --exclude /var/cache \
+    --exclude /var/tmp \
+    --exclude /var/lib/flatpak \
+    --exclude /home/eric/.cache \
+    --exclude /home/eric/.local/share \
+    --exclude /home/eric/.cargo \
+    --exclude /home/eric/.npm \
+    --exclude /home/eric/.ghc \
+    --exclude /home/eric/.stack \
+    --exclude /home/eric/.vscode \
+    --exclude /home/eric/.mozilla/firefox \
+    --exclude /home/eric/.config/google-chrome \
+    --exclude /home/eric/.config/Code \
+    --exclude /home/eric/Videos \
+    --exclude /home/eric/Downloads \
+    --exclude /home/eric/tmp \
+    --exclude /home/eric/rpmbuild \
+    --exclude /home/eric/src \
+    --exclude /home/eric/opt \
+    /home /root /etc /var
