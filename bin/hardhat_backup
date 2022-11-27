@@ -1,0 +1,4 @@
+#!/usr/bin/zsh
+echo need date >&2
+exit 1
+sudo tarsnap --keyfile /root/tarsnap.key --cachedir /var/cache/tarsnap -c -f tmp-hardhat_unknown --exclude /var/cache /home /root /etc /var
