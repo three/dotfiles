@@ -4,3 +4,7 @@
     exact = true
     stripComponents = 1
     refreshPeriod = "168h"
+["dotfiles"]
+    type = "git-repo"
+    url = "git@github.com:three/dotfiles.git"
+    refreshPeriod = "168h"
