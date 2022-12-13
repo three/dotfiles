@@ -1,0 +1,18 @@
+#!/usr/bin/env zsh
+if [[ $# -ne 2 ]]; then
+cat <<EOF
+Use ffmpeg to convert a video to widely supported h264. Always takes the first
+video and first audio stream of the video.
+
+Based on https://img.ly/blog/ultimate-guide-to-ffmpeg/
+
+$0 <input> <output>
+EOF
+exit 1
+fi
+
+set -x
+ffmpeg \
+    -y -i "$1" \
+    -c:v libx264 -preset slow -crf 22 -profile:v main -g 250 -pix_fmt yuv420p -map 0:v -map 0:a \
+    -acodec aac -ar 44100 -b:a 320k "$2"
