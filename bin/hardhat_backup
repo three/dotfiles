@@ -1,13 +1,23 @@
-#!/usr/bin/zsh
-set -eux -o pipefail
-ARCHIVE_NAME="harhat-root_$(date '+%Y-%m-%dT%H:%M:%SZ')"
-echo "ARCHIVE_NAME=$ARCHIVE_NAME"
+#!/usr/bin/env bash
+
+if [[ "$HOSTNAME" != "hat-ericfi-link" ]]; then
+    echo "Invalid Hostname $HOSTNAME" >&2
+    exit 1
+fi
+
+# ARCHIVE_NAME="harhat-root_$(date '+%Y-%m-%dT%H:%M:%SZ')"
+# echo "ARCHIVE_NAME=$ARCHIVE_NAME"
 
 # TODO: Why are programs throwing their caches everywhere???
-tarsnap \
-    -cvf "$ARCHIVE_NAME" \
-    --keyfile /root/tarsnap.key \
-    --cachedir /var/cache/tarsnap  \
+
+cat <<EOF | sudo bash
+set -e
+source /root/restic.env
+set -x
+restic \
+    --verbose \
+    backup \
+\
     --exclude /var/cache \
     --exclude /var/tmp \
     --exclude /var/lib/flatpak \
@@ -28,3 +38,36 @@ tarsnap \
     --exclude /home/eric/src \
     --exclude /home/eric/opt \
     /home /root /etc /var
+
+restic forget \
+    --verbose \
+    --prune \
+    --keep-within 10d \
+    --keep-monthly 24
+EOF
+exit $?
+
+# tarsnap \
+#     -cvf "$ARCHIVE_NAME" \
+#     --keyfile /root/tarsnap.key \
+#     --cachedir /var/cache/tarsnap  \
+#     --exclude /var/cache \
+#     --exclude /var/tmp \
+#     --exclude /var/lib/flatpak \
+#     --exclude /home/eric/.cache \
+#     --exclude /home/eric/.local/share \
+#     --exclude /home/eric/.cargo \
+#     --exclude /home/eric/.npm \
+#     --exclude /home/eric/.ghc \
+#     --exclude /home/eric/.stack \
+#     --exclude /home/eric/.vscode \
+#     --exclude /home/eric/.mozilla/firefox \
+#     --exclude /home/eric/.config/google-chrome \
+#     --exclude /home/eric/.config/Code \
+#     --exclude /home/eric/Videos \
+#     --exclude /home/eric/Downloads \
+#     --exclude /home/eric/tmp \
+#     --exclude /home/eric/rpmbuild \
+#     --exclude /home/eric/src \
+#     --exclude /home/eric/opt \
+#     /home /root /etc /var
