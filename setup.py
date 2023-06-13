@@ -19,7 +19,7 @@ GIT_DEPENDENCIES=[
     ('zsh-autosuggestions', 'https://github.com/zsh-users/zsh-autosuggestions.git'),
 ]
 
-def setup_deps():
+def setup_deps(should_update):
     try:
         os.mkdir('./deps')
     except FileExistsError:
@@ -37,9 +37,9 @@ def setup_deps():
             err = subprocess.call(['git', 'clone', '--depth=1', repo, clonepath])
             if err != 0:
                 die(err, "Unable to clone", name)
-        err = subprocess.call(['git', '-C', clonepath, 'pull'])
+        err = subprocess.call(['git', '-C', clonepath, 'pull' if should_update else 'fetch'])
         if err != 0:
-            die(err, "Unable to pull", name)
+            die(err, "Unable to pull or fetch", name)
         err = subprocess.call(
             ['git', '-C', clonepath, 'submodule', 'update', '--init', '--recursive']
         )
@@ -58,13 +58,33 @@ def setup_deps():
         ).groups()[0]
         submodule_revisions.append((name, current_revision))
 
-    with open('deps_lock.txt', 'w+') as deps_lock:
-        deps_lock.truncate(0)
-        for name, rev in submodule_revisions:
-            deps_lock.write(name)
-            deps_lock.write(' ')
-            deps_lock.write(rev)
-            deps_lock.write('\n')
+    if should_update:
+        with open('deps_lock.txt', 'w+') as deps_lock:
+            deps_lock.truncate(0)
+            for name, rev in submodule_revisions:
+                deps_lock.write(name)
+                deps_lock.write(' ')
+                deps_lock.write(rev)
+                deps_lock.write('\n')
+
+    with open('deps_lock.txt', 'r') as deps_lock:
+        for line in deps_lock:
+            dep_name, revision = re.match(
+                r'^([a-zA-Z0-9_-]+) ([0-9a-f]+)$',
+                line
+            ).groups()
+            clonepath = os.path.join('./deps', dep_name)
+            sys.stdout.write(dep_name)
+            sys.stdout.write(': ')
+            sys.stdout.flush()
+            err = subprocess.call(
+                [
+                    'git', '-C', clonepath,
+                    'switch', '--detach', revision
+                ]
+            )
+            if err != 0:
+                die(err, "Unable to swith to detached revision", dep_name, revision)
 
     print("Setup depdendencies successfully.")
 
@@ -77,13 +97,17 @@ def main():
         '--deps',
         action=argparse.BooleanOptionalAction,
     )
+    parser.add_argument(
+        '--update',
+        action=argparse.BooleanOptionalAction,
+    )
     args = parser.parse_args()
 
     print("== Dotfiles Setup ==")
     anything_done = False
     if args.deps:
         anything_done = True
-        setup_deps()
+        setup_deps(should_update=args.update)
 
     if not anything_done:
         print("Nothing was done.")
