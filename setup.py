@@ -88,6 +88,24 @@ def setup_deps(should_update):
 
     print("Setup depdendencies successfully.")
 
+def setup_ytdlp():
+    err = subprocess.call(['git', '--version'])
+    if err != 0:
+        die(err, "Failed to print git version (command not in PATH?)")
+    clonepath = os.path.join('./deps', 'yt-dlp')
+    if not os.path.exists(clonepath):
+        err = subprocess.call(['git', 'clone', 'https://github.com/yt-dlp/yt-dlp.git', clonepath])
+        if err != 0:
+            die(err, "Unable to clone yt-dlp")
+    err = subprocess.call(['git', '-C', clonepath, 'fetch'])
+    if err != 0:
+        die(err, "Unable to fetch yt-dlp")
+    err = subprocess.call(
+        ['git', '-C', clonepath, 'switch', '--detach', '2023.07.06']
+    )
+    if err != 0:
+        die(err, "Unable to switch branches")
+
 def main():
     parser = argparse.ArgumentParser(
         prog="Dotfiles Setup",
@@ -101,6 +119,10 @@ def main():
         '--update',
         action=argparse.BooleanOptionalAction,
     )
+    parser.add_argument(
+        '--yt-dlp',
+        action=argparse.BooleanOptionalAction,
+    )
     args = parser.parse_args()
 
     print("== Dotfiles Setup ==")
@@ -108,6 +130,10 @@ def main():
     if args.deps:
         anything_done = True
         setup_deps(should_update=args.update)
+
+    if args.yt_dlp:
+        anything_done = True
+        setup_ytdlp()
 
     if not anything_done:
         print("Nothing was done.")
