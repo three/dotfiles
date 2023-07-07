@@ -16,10 +16,12 @@ else
     export ZSH_THEME="clean"
 fi
 
-plugins=()
+plugins=( task )
 unsetopt AUTO_CD
 
 source "$ZSH/oh-my-zsh.sh"
+
+autoload -U compinit && compinit
 
 PROMPT='%{$fg[$NCOLOR]%}%B%n%b@%m%{$reset_color%}:%{$fg[blue]%}%B%c/%b%{$reset_color%} $(git_prompt_info)%(!.#.$) '
 
