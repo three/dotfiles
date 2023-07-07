@@ -1,6 +1,6 @@
-source $DOTFILES/shell/common.sh
+source "$DOTFILES/shell/common.sh"
 
-export ZSH=$DOTFILES/deps/oh-my-zsh
+export ZSH="$DOTFILES/deps/oh-my-zsh"
 export DISABLE_AUTO_UPDATE="true"
 
 export ZSH_CUSTOM="$DOTFILES/deps"
@@ -34,7 +34,6 @@ command_not_found_handler() {
 # Intead of loading NVM immediately (since it's rarely used), only load on
 # first use. Note the definition of the nvm command will be overwritten by
 # nvm.sh, so this is not actually recursive
-
 export NVM_DIR="$DOTFILES/deps/nvm"
 nvm() {
     source $NVM_DIR/nvm.sh || return 1
@@ -45,6 +44,17 @@ nvm() {
 cnote() {
     git reset
     git commit --allow-empty "[WIP] $1"
+}
+
+# Quick Commit
+gsave() {
+    local DES
+    DES="[$(git symbolic-ref --short HEAD | egrep -o '[A-Za-z0-9_-]+$' || echo SAVE)]"
+    if [[ $# -gt 0 ]]; then
+        DES="$DES $@"
+    fi
+    git commit -am "$DES"
+    return $?
 }
 
 # Misc Utilities
