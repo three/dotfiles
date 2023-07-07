@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh
+YT_DLP_SH_PATH="$DOTFILES/deps/yt-dlp/yt-dlp.sh"
+if [[ ! -f "$YT_DLP_SH_PATH" ]]; then
+    echo "Path $YT_DLP_SH_PATH not found. Have you run setup.py --yt-dlp?" >&2
+    exit -1
+fi
+exec "$YT_DLP_SH_PATH" $@
