@@ -16,7 +16,7 @@ else
     export ZSH_THEME="clean"
 fi
 
-plugins=( task )
+plugins=( )
 unsetopt AUTO_CD
 
 source "$ZSH/oh-my-zsh.sh"
